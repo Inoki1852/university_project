@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:university_project/custom_widgets/custom_push_replacement.dart';
 
 import '../login/login.dart';
 
@@ -26,19 +27,7 @@ class _LoadingState extends State<Loading> with SingleTickerProviderStateMixin {
     _controller.repeat();
     Timer(Duration(milliseconds: 2500), () {
       _controller.stop();
-      Navigator.pushReplacement(
-        context,
-        PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => Login(),
-          transitionsBuilder:
-              (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: animation,
-              child: child,
-            );
-          },
-        ),
-      );
+      customPushReplacement(context, Login());
     });
   }
 
@@ -51,7 +40,7 @@ class _LoadingState extends State<Loading> with SingleTickerProviderStateMixin {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             RotationTransition(
-              turns: Tween(begin: 0.0, end: 2.7).animate(_controller),
+              turns: Tween(begin: 0.0, end: 2.5).animate(_controller),
               child: Image.asset(
                 'assets/images/logo.png',
                 width: 100,

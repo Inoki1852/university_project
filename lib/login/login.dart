@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:university_project/custom_widgets/custom_email.dart';
+import 'package:university_project/custom_widgets/custom_push.dart';
+import 'package:university_project/custom_widgets/custom_text_main.dart';
+import 'package:university_project/login/restore_password.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -26,30 +30,16 @@ class _LoginState extends State<Login> {
               child: ListView(children: [
                 Padding(
                   padding: const EdgeInsets.only(
-                      left: 12, right: 12, top: 40, bottom: 25),
+                      left: 12, right: 12, top: 80, bottom: 25),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Welcome!',
-                          style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.w700)),
+                      CustomTextMain(text: 'Welcome!'),
                       Padding(
                         padding: const EdgeInsets.only(top: 15),
-                        child: TextFormField(
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color:
-                                    _isEmailInvalid ? Colors.red : Colors.black,
-                              ),
-                            ),
-                            labelText: 'Email',
-                            errorText: _isEmailInvalid ? 'Wrong e-mail' : null,
-                            suffixIcon: _isEmailInvalid
-                                ? Icon(Icons.error, color: Colors.red)
-                                : null,
-                          ),
+                        child: CustomEmail(
+                          emailController: _emailController,
+                          isEmailInvalid: _isEmailInvalid,
                         ),
                       ),
                       Padding(
@@ -140,7 +130,7 @@ class _LoginState extends State<Login> {
                             padding: const EdgeInsets.only(top: 15),
                             child: GestureDetector(
                               onTap: () {
-                                // print('Tapped!');
+                                customPush(context, RestorePassword());
                               },
                               child: Text(
                                 'Restore',
