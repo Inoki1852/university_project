@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class CustomEmail extends StatelessWidget {
   final TextEditingController emailController;
-  bool isEmailInvalid = false;
+  final bool isEmailInvalid;
 
-  CustomEmail(
+  const CustomEmail(
       {super.key, required this.emailController, required this.isEmailInvalid});
 
   @override

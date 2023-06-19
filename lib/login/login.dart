@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:university_project/custom_widgets/custom_email.dart';
 import 'package:university_project/custom_widgets/custom_push.dart';
 import 'package:university_project/custom_widgets/custom_text_main.dart';
-import 'package:university_project/login/restore_password.dart';
+import 'package:university_project/login/registration/choose_status.dart';
+import 'package:university_project/login/restore_password/restore_password_send.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -26,7 +27,7 @@ class _LoginState extends State<Login> {
         child: Scaffold(
           body: Center(
             child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 500),
+              constraints: BoxConstraints(maxWidth: 400),
               child: ListView(children: [
                 Padding(
                   padding: const EdgeInsets.only(
@@ -76,7 +77,9 @@ class _LoginState extends State<Login> {
                           children: [
                             Expanded(
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  customPush(context, ChooseStatus());
+                                },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.white,
                                   foregroundColor: Colors.blue[800],
@@ -130,7 +133,7 @@ class _LoginState extends State<Login> {
                             padding: const EdgeInsets.only(top: 15),
                             child: GestureDetector(
                               onTap: () {
-                                customPush(context, RestorePassword());
+                                customPush(context, RestorePasswordSend());
                               },
                               child: Text(
                                 'Restore',

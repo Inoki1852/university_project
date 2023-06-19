@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:university_project/custom_widgets/custom_push.dart';
 import 'package:university_project/custom_widgets/custom_push_replacement.dart';
 import 'package:university_project/custom_widgets/custom_text_main.dart';
 import 'package:university_project/login/login.dart';
+import 'package:university_project/login/restore_password/restore_password_sent.dart';
 
-import '../custom_widgets/custom_email.dart';
+import '../../custom_widgets/custom_email.dart';
 
-class RestorePassword extends StatefulWidget {
-  const RestorePassword({super.key});
+class RestorePasswordSend extends StatefulWidget {
+  const RestorePasswordSend({super.key});
 
   @override
-  State<RestorePassword> createState() => _RestorePasswordState();
+  State<RestorePasswordSend> createState() => _RestorePasswordSendState();
 }
 
-class _RestorePasswordState extends State<RestorePassword> {
+class _RestorePasswordSendState extends State<RestorePasswordSend> {
   final _emailController = TextEditingController();
   bool _isEmailInvalid = false;
 
@@ -24,7 +26,7 @@ class _RestorePasswordState extends State<RestorePassword> {
         child: Scaffold(
           body: Center(
             child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 500),
+              constraints: BoxConstraints(maxWidth: 400),
               child: ListView(children: [
                 AppBar(
                   leading: IconButton(
@@ -61,6 +63,9 @@ class _RestorePasswordState extends State<RestorePassword> {
                                     setState(() => _isEmailInvalid = true);
                                   } else {
                                     setState(() => _isEmailInvalid = false);
+                                  }
+                                  if (!_isEmailInvalid) {
+                                    customPush(context, RestorePasswordSent());
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
